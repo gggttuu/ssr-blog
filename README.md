@@ -33,7 +33,7 @@
 ### 3. 数据库设计（MySQL）
 
 > 默认数据库名：`ssr_blog`  
-> 默认用户：`blog_user` / `blog_password`（可以在 MySQL 里自行调整）
+> 默认用户：`blog_user` / `blog_password`
 
 主要表结构如下：
 
@@ -118,7 +118,7 @@
 - UI 小功能：
   - 暗黑模式切换（localStorage 记住用户偏好）
   - 标签云可视化
-  - 响应式布局（桌面和移动端都可用）
+  - 响应式布局
 
 ### 8. AI 写作助手
 
@@ -128,13 +128,12 @@
   - Markdown 格式正文草稿
 - 生成内容会直接填入编辑器，可继续手动编辑后发布
 
-> 如果没有配置 `OPENAI_API_KEY`，则会返回本地示例内容，方便本地演示和开发。
-
 ---
 ## 环境准备
 - Node.js 
   - node -v
 - MySQL 初始化
+```bash
   - CREATE DATABASE ssr_blog DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
   - CREATE USER 'blog_user'@'localhost' IDENTIFIED BY 'blog_password';
   - GRANT ALL PRIVILEGES ON ssr_blog.* TO 'blog_user'@'localhost';
