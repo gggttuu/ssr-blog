@@ -127,6 +127,12 @@
   - 一段摘要
   - Markdown 格式正文草稿
 - 生成内容会直接填入编辑器，可继续手动编辑后发布
+### 9. 效果截图
+<img width="2540" height="1255" alt="a37b8908099e89b3455752dee06290b7" src="https://github.com/user-attachments/assets/2acf6081-7b2c-45af-bdc2-7d4f267aa68f" />
+<img width="2553" height="1326" alt="ca2ae66b30fc51c908c24581637913ad" src="https://github.com/user-attachments/assets/a8d720c2-82a7-421a-a40d-6769974264c0" />
+<img width="2537" height="1341" alt="18d6631709639ecf1820b94d65faf3d2" src="https://github.com/user-attachments/assets/4bc58bc2-5a60-4563-8a3c-41afd2bb5067" />
+<img width="2554" height="1331" alt="a7c07bb77689313182681dcf4cbef140" src="https://github.com/user-attachments/assets/5d941eb0-9260-4041-977f-558c820b68e6" />
+<img width="2542" height="1279" alt="14ccb0eae4673025deef02f319a803a0" src="https://github.com/user-attachments/assets/4e978e21-4a79-47ff-8d17-a39246fae3e0" />
 
 ---
 ## 环境准备
