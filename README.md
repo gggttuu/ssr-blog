@@ -131,6 +131,70 @@
 > 如果没有配置 `OPENAI_API_KEY`，则会返回本地示例内容，方便本地演示和开发。
 
 ---
+## 环境准备
+- Node.js 
+  - node -v
+- MySQL 初始化
+  - CREATE DATABASE ssr_blog DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+  - CREATE USER 'blog_user'@'localhost' IDENTIFIED BY 'blog_password';
+  - GRANT ALL PRIVILEGES ON ssr_blog.* TO 'blog_user'@'localhost';
+  - FLUSH PRIVILEGES;
+ 
+- 建表 SQL
+  USE ssr_blog;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  role ENUM('admin','user') NOT NULL DEFAULT 'user',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE articles (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(200) NOT NULL,
+  summary VARCHAR(500),
+  content MEDIUMTEXT NOT NULL,
+  tags VARCHAR(255),
+  status ENUM('draft','published') NOT NULL DEFAULT 'draft',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  author_id INT,
+  views INT NOT NULL DEFAULT 0,
+  is_deleted TINYINT(1) NOT NULL DEFAULT 0,
+  FOREIGN KEY (author_id) REFERENCES users(id),
+  INDEX idx_status_created (status, created_at),
+  INDEX idx_status_views (status, views)
+);
+
+CREATE TABLE comments (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  article_id INT NOT NULL,
+  author_name VARCHAR(100) NOT NULL,
+  content TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  is_deleted TINYINT(1) NOT NULL DEFAULT 0,
+  FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE,
+  INDEX idx_article_created (article_id, created_at)
+);
+
+
+- Redis
+  - 默认使用本地 Redis：
+  - host: 127.0.0.1
+  - port: 6379
+ 
+## 本地运行步骤
+
+### 安装依赖
+- npm install
+
+### 构建前端
+- npm run build
+
+### 启动服务（开发模式）
+- npm run dev
 
 ## 项目结构
 
